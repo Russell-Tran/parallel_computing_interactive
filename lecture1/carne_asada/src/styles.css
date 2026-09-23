@@ -171,7 +171,18 @@ body {
 
 /* ---- stage ---- */
 
+/*
+ * Sized from viewport height, not just width. At the page's full 1040px the
+ * canvas is 650px tall, so the stage plus its controls needed ~800px — a whole
+ * laptop viewport — and the top of the griddle scrolled out of view while you
+ * were playing on it. Capping the frame's width at the width that yields a
+ * 55vh-tall canvas keeps the whole play area on screen, and because the cap is
+ * a max-width the aspect ratio still does the work: no letterboxing, and on a
+ * phone `100%` always wins so nothing changes there.
+ */
 .stage {
+  max-width: min(100%, calc(55vh * 960 / 600), 1024px);
+  margin-inline: auto;
   border-radius: 20px;
   overflow: hidden;
   background: #241a16;
@@ -280,8 +291,38 @@ body {
   transform: none;
 }
 
+/* Short, wide windows: give the griddle the room instead of the masthead. */
+@media (min-width: 720px) and (max-height: 920px) {
+  .page {
+    padding-block: 20px 28px;
+    gap: 15px;
+  }
+
+  .title { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+  .answer { gap: 7px; margin-top: 2px; }
+  .answer__line p { font-size: 1.08rem; }
+  .dish { margin-top: 8px; }
+  .dish__name { font-size: clamp(1.3rem, 2.8vw, 1.7rem); }
+  .dish__arrow { width: 28px; height: 33px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: 0.01ms !important; }
+}
+
+/* Short, wide windows: give the griddle the room instead of the masthead. */
+@media (min-width: 720px) and (max-height: 920px) {
+  .page {
+    padding-block: 20px 28px;
+    gap: 15px;
+  }
+
+  .title { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+  .answer { gap: 7px; margin-top: 2px; }
+  .answer__line p { font-size: 1.08rem; }
+  .dish { margin-top: 8px; }
+  .dish__name { font-size: clamp(1.3rem, 2.8vw, 1.7rem); }
+  .dish__arrow { width: 28px; height: 33px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
