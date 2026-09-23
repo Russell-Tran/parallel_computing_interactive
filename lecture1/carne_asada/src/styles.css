@@ -76,6 +76,24 @@ body {
   color: var(--accent);
 }
 
+/* Citations link to the slide they quote. */
+.src {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.src:hover { text-decoration-color: currentColor; }
+
+.src:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 .title {
   margin: 0;
   font-family: var(--display);

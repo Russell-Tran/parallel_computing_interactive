@@ -4,23 +4,38 @@ import { Hud } from './components/Hud';
 import { Stage } from './components/Stage';
 import type { GriddleController } from './physics/controller';
 
+const LECTURE = 'https://cs149.stanford.edu/fall25/lecture/efficiency/';
+const slide = (n: number) => `${LECTURE}slide_${n}`;
+
 export default function App() {
   const [controller, setController] = useState<GriddleController | null>(null);
 
   return (
     <main className="page">
       <header className="masthead">
-        <p className="eyebrow">Stanford CS149 · Lecture 1</p>
+        <p className="eyebrow">
+          <a className="src" href={LECTURE} target="_blank" rel="noopener noreferrer">
+            Stanford CS149 · Lecture 1 · Why Parallelism? Why Efficiency?
+          </a>
+        </p>
         <h1 className="title">What is a computer program?</h1>
 
         <div className="answer">
           <blockquote className="answer__line">
             <p>A program is just a list of instructions.</p>
-            <cite>Slide 26</cite>
+            <cite>
+              <a className="src" href={slide(26)} target="_blank" rel="noopener noreferrer">
+                Slide 26
+              </a>
+            </cite>
           </blockquote>
           <blockquote className="answer__line answer__line--recipe">
             <p>Kind of like the instructions in a recipe for your favorite meals.</p>
-            <cite>Slide 27</cite>
+            <cite>
+              <a className="src" href={slide(27)} target="_blank" rel="noopener noreferrer">
+                Slide 27
+              </a>
+            </cite>
           </blockquote>
         </div>
 
